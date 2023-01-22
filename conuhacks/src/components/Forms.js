@@ -8,6 +8,11 @@ const as = nlp.as;
 const Forms = () => {
 
     const form = useRef();
+    const[relationship1Score, SetRelationship1Score] = React.useState(0);
+    const[relationship2Score, SetRelationship2Score] = React.useState(0);
+    const[perception1Score, SetPerception1Score] = React.useState(0);
+    const[perception2Score, SetPerception2Score] = React.useState(0);
+    const[totalScore, SetTotalScore] = React.useState(0);
 
     const sendEmail = (e) => {
     e.preventDefault();
@@ -28,7 +33,11 @@ const Forms = () => {
 
         }
 
-
+        SetRelationship1Score(sentiment(relationship1));
+        SetRelationship2Score(sentiment(relationship2));
+        SetPerception1Score(sentiment(perception1));
+        SetPerception2Score(sentiment(perception2));
+        SetTotalScore((sentiment(relationship1) + sentiment(relationship2) + sentiment(perception1) + sentiment(perception2)) /5);
 
 
 
@@ -77,6 +86,7 @@ const Forms = () => {
                             </div>
                         </form> 
                 </div>
+                `<div> {relationship1Score} {relationship2Score} {perception1Score} {perception2Score} {totalScore}</div>   `
             </div>
         </section>
     )
