@@ -3,8 +3,30 @@
     text-align: center;
 }
 
-.description {
+.analysis-container {
+    margin-top: 5px;
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.reddit-item {
+    padding: 2%;
+    text-align: justify;
+    justify-content: center;
+}
+
+.main-container > div {
+    flex: 40%;
+  }
+
+.poster-img {
+    text-align: justify;
+    justify-content: center;
+}
+
+.poster-img-div {
     text-align: center;
-    margin: 10px;
-    
 }
