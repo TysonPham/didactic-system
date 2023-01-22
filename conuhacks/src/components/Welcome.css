@@ -1,6 +1,11 @@
 .title {
-    margin-top: 150px;
+    margin-top: 15%;
     text-align: center;
+}
+
+.title-intro {
+    text-align: justify;
+    margin-top: 2%;
 }
 
 .office-title {
@@ -8,7 +13,75 @@
     width: 40%;
 }
 
+.office-first-title {
+    margin-left: 10%;
+    margin-bottom: 20%;
+    font-size: 26px;
+    color:black;
+    font-weight: 800;
+}
+
 .office-pic {
     width: 40%;
     
 }
+
+.office-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.office-text {
+
+}
+
+.office-title {
+    margin-top: 3%;
+}
+
+.office-item {
+    padding: 2%;
+    text-align: justify;
+    justify-content: center;
+}
+
+.office-container > div {
+    flex: 50%;
+  }
+  
+  .office-img {
+    width:  70%;
+    height: 70%;
+}
+
+.office-img-div {
+    text-align: center;
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.team-item {
+    padding: 2%;
+    text-align: justify;
+}
+
+.team-container > div {
+    flex: 50%;
+}
+
+.team-img {
+    float: left;
+    width:  100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+h3 {
+    margin-bottom: 5%;
+}
+
