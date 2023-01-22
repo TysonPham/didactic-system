@@ -3,15 +3,21 @@ import Header from './components/Header';
 import Welcome from './components/Welcome';
 import Analysis from './components/Analysis';
 import Forms from './components/Forms'
+import Footer from './components/Footer';
+import ScrollUp from './components/ScrollUp';
 
 function App() {
   return (
-    <div className="App">
+    <>
+    <main className="main">
       <Header />
       <Analysis />
       <Welcome />
       <Forms />
-    </div>
+    </main>
+    <Footer />
+    <ScrollUp />
+    </>
   );
 }
 

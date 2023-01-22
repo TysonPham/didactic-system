@@ -5,7 +5,7 @@ import UFC from './UFC.png';
 
 const Analysis = () => {
     return(
-        <div className="analysis-container">
+        <div className="analysis-container" id='analysis'>
             <h1 className="title">
                 Sentimental Analysis of a UFC Reddit Thread
             </h1>

@@ -44,13 +44,13 @@ const Forms = () => {
 
         }
 
-        SetRelationship1Score(sentiment(relationship1));
-        SetRelationship2Score(sentiment(relationship2));
+        SetRelationship1Score(sentiment(relationship1) +1);
+        SetRelationship2Score(sentiment(relationship2) +1);
         SetPerception1Score(sentiment(perception1) + 1);
         SetPerception2Score(sentiment(perception2) + 1);
         SetTotalScore((sentiment(relationship1) + sentiment(relationship2) + sentiment(perception1) + sentiment(perception2)) / 4);
 
-        setDone(Math.round((sentiment(relationship1) + 1) * 50));
+        setDone(Math.round(((sentiment(relationship1) + 1) +(sentiment(relationship2) + 1) + (sentiment(perception1) + 1) + (sentiment(perception2) + 1)) / 4) * 50);
 
         element.classList.remove("timelapse");
         setTimeout(function () {
@@ -60,7 +60,7 @@ const Forms = () => {
     };
 
     return (
-        <section className="contact section" id="contact">
+        <section className="contact section" id="forms">
             <h2 className="section__title">Survey</h2>
             <span className="section__subtitle">Help us help you</span>
 

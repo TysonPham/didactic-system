@@ -9,7 +9,7 @@ import Intern2 from './Intern2.png';
 const Welcome = () => {
 
     return (
-    <div className="container">
+    <div className="container" id="interns">
         <h1 className= "title">Welcome to the GSoft Team</h1>
         <div className="title-intro">
             We are excited to have you onboard of our team. We hope you are ready meet a wonderful team and face new challenges.
