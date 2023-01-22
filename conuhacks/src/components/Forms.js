@@ -14,7 +14,6 @@ const Forms = () => {
     const [totalScore, SetTotalScore] = React.useState(0);
     const [style, setStyle] = React.useState({});
     const [done, setDone] = React.useState(0);
-    var element = document.getElementById('btn');
 
     setTimeout(() => {
         const newStyle = {
@@ -23,7 +22,7 @@ const Forms = () => {
         }
 
         setStyle(newStyle);
-    }, 200);
+    }, 500);
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -41,22 +40,15 @@ const Forms = () => {
             const text = input;
             const doc = nlp.readDoc(text);
             return (doc.out(its.sentiment));
-
         }
 
         SetRelationship1Score(sentiment(relationship1) +1);
         SetRelationship2Score(sentiment(relationship2) +1);
         SetPerception1Score(sentiment(perception1) + 1);
         SetPerception2Score(sentiment(perception2) + 1);
-        SetTotalScore((sentiment(relationship1) + sentiment(relationship2) + sentiment(perception1) + sentiment(perception2)) / 4);
+        SetTotalScore((relationship1Score + relationship2Score + perception1Score + perception2Score)/ 4);
 
-        setDone(Math.round(((sentiment(relationship1) + 1) +(sentiment(relationship2) + 1) + (sentiment(perception1) + 1) + (sentiment(perception2) + 1)) / 4) * 50);
-
-        element.classList.remove("timelapse");
-        setTimeout(function () {
-            element.addClass('timelapse');
-        }, 100)
-
+        setDone(Math.round(totalScore * 50));
     };
 
     return (
@@ -108,7 +100,7 @@ const Forms = () => {
             </div>
             <div className='good__container'>
                 <div className="progress stack-over-top">
-                    <div className="progress-done " id='btn' style={style}>{done}%</div>
+                    <div className={done == 0 ? "progress-invis" : "progress-done "} id='btn' style={style}>{done}%</div>
                 </div>
                 <div className="progress">
                     <div className="progress-bg"></div>

@@ -137,6 +137,10 @@ justify-content: center;
 text-align: center; 
 }
 
+.progress-invis {
+    display: none;
+}
+
 
   @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
