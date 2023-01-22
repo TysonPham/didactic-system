@@ -15,68 +15,63 @@ const r = new snoowrap({
 });
 
 
-async function getPreComment() {
-
-    const response = await r.getSubmission('10gwi7g').fetch();
-    const json = await response.toJSON();
-    return json;
-}
 async function getComment() {
 
-    const response = await r.getSubmission('10i3xfg').fetch()
+    const response = await r.getSubmission('10gwi7g').fetch()
+    const json = await response.toJSON()
+    return json
+}
+async function getPostComment() {
+    const response = await r.getSubmission('10icqsb').fetch()
     const json = await response.toJSON()
     return json
 }
 
+getComment().then(data => {
+    let score = 0;
+    let num = Object.keys(data).length
+    for(let i = 0;i< num;i++){
+        if(data.comments[i].body === undefined || data.comments[i].body === null){
+            continue;
+        }
+        const text = data.comments[i].body;
+       const doc = nlp.readDoc(text);
+        score+= doc.out(its.sentiment)
 
 
-
-
-
-
-// getPreComment().then(data => {
-//
-//     for (let i = 0; i < Object.keys(data).length; i++) {
-//         const text = data.comments[i].body;
-//         const doc = nlp.readDoc(text);
-//
-//       //  console.log(doc.sentences().out())
-//         //console.log(doc.out() + ' Sentiment value: ' + doc.out(its.sentiment))
-//         console.log(doc.tokens().out())
-//
-//        console.log( doc.tokens()
-//             .filter(
-//                 // Exclude nouns inside an entity
-//                 (t) => !t.parentEntity() && t.out(its.pos) === 'VERB'
-//
-//             )
-//             .out());
-//
-//
-//
-//     }
-
-    //argument should take in fighter name
-    //return meaningful words that are, adjective, verbs, adverbs
-   async function getDescriptivewords(){
-        getPreComment().then(data => {
-            for (let i = 0; i < Object.keys(data).length; i++) {
-                const text = data.comments[i].body;
-                const doc = nlp.readDoc(text);
-                //console.log(doc.tokens().out())
-
-                console.log( doc.tokens()
-                    .filter(
-                        (t) => !t.parentEntity() && t.out(its.pos) === 'VERB').out());
-            }
-        })
     }
+    console.log((score/num) )
+}).catch(err => {
+
+});
 
 
-    getDescriptivewords()
-    //argument should take in fighter name
-    //return sentiment value
-    //async function getSentimentValue(){}
+
+getPostComment().then(data => {
+    let score = 0;
+    let num = Object.keys(data).length
+    for(let i = 0;i< num;i++){
+        if(data?.comments[i]?.body !== undefined){
+            const text = data.comments[i].body;
+            const doc = nlp.readDoc(text);
+            score+= doc.out(its.sentiment)
+        }
+
+
+
+    }
+    console.log( (score/num) )
+}).catch(err => {
+console.log(err)
+});
+
+
+export default main;
+
+
+
+
+
 
 
 
