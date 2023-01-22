@@ -1,6 +1,10 @@
 import React, { useRef } from 'react';
 import "./Forms.css"
-
+const winkNLP = require('wink-nlp');
+const model = require('wink-eng-lite-web-model');
+const nlp = winkNLP(model);
+const its = nlp.its;
+const as = nlp.as;
 const Forms = () => {
 
     const form = useRef();
@@ -13,7 +17,21 @@ const Forms = () => {
     const perception1 =document.getElementById("answer3").value;
     const perception2 =document.getElementById("answer4").value;
 
-    console.log(relationship1 + relationship2 + perception1 + perception2)
+
+
+        //user input
+        //return int -1 to 1
+        let sentiment = (input)=>{
+            const text = input;
+            const doc = nlp.readDoc(text);
+            return (doc.out(its.sentiment));
+
+        }
+
+
+
+
+
     };
 
     return (
