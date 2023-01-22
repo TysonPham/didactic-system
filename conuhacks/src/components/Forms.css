@@ -5,6 +5,24 @@
     padding-bottom: 3rem;
 }
 
+.good__container {
+    /*grid-template-columns: repeat(1, max-content);*/
+    justify-content: center;
+    position: relative;
+    column-gap: 6rem;
+    padding-bottom: 3rem;
+}
+
+.stack-top {
+    z-index: 9;
+    margin: 0px;
+}
+
+.stack-over-top {
+    z-index: 7;
+}
+
+
 .contact__title {
     text-align: center;
     font-size: var(--h3-font-size);
@@ -113,10 +131,64 @@
 }
 
 .button__middle {
-position: absolute;
-left: 46%;
+position: flex;
 align-items: center;
+justify-content: center;
+text-align: center; 
 }
+
+
+  @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+  * {
+      box-sizing: border-box;
+  }
+  
+  
+  .progress {
+      background-color: transparent;
+      border-radius: 20px;
+      position: absolute;
+      height: 30px;
+      width: 300px;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+  }
+  
+  .progress-done {
+      background: linear-gradient(to right, #FF0000, #00FF00);
+      box-shadow: 0 3px 3px -5px black, 0 2px 5px black;
+      border-radius: 20px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      width: 100%;
+      opacity: 100%;
+      transition: 1s ease 0.3s;
+  }
+
+  .progress-bg {
+    background-color: black;
+    box-shadow: 0 3px 3px -5px black, 0 2px 5px black;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    opacity: 100%;
+  }
+
 
 
 /* ============================================= BREAKPOINTS ============================================= */
