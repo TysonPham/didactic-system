@@ -1,6 +1,10 @@
-'use strict';
 const snoowrap = require('snoowrap');
 require('dotenv').config()
+const winkNLP = require('wink-nlp');
+const model = require('wink-eng-lite-web-model');
+const nlp = winkNLP(model);
+const its = nlp.its;
+const as = nlp.as;
 
 const r = new snoowrap({
     userAgent: 'hi',
@@ -16,18 +20,59 @@ async function getComment() {
     const response = await r.getSubmission('10gwi7g').fetch()
     const json = await response.toJSON()
     return json
-
-
+}
+async function getPostComment() {
+    const response = await r.getSubmission('10icqsb').fetch()
+    const json = await response.toJSON()
+    return json
 }
 
 getComment().then(data => {
-    for(let i = 0;i< Object.keys(data).length;i++){
-        console.log(data.comments[i].body);
-    }
+    let score = 0;
+    let num = Object.keys(data).length
+    for(let i = 0;i< num;i++){
+        if(data.comments[i].body === undefined || data.comments[i].body === null){
+            continue;
+        }
+        const text = data.comments[i].body;
+       const doc = nlp.readDoc(text);
+        score+= doc.out(its.sentiment)
 
+
+    }
+    console.log((score/num) )
 }).catch(err => {
-    console.log(err);
+
 });
+
+
+
+getPostComment().then(data => {
+    let score = 0;
+    let num = Object.keys(data).length
+    for(let i = 0;i< num;i++){
+        if(data?.comments[i]?.body !== undefined){
+            const text = data.comments[i].body;
+            const doc = nlp.readDoc(text);
+            score+= doc.out(its.sentiment)
+        }
+
+
+
+    }
+    console.log( (score/num) )
+}).catch(err => {
+console.log(err)
+});
+
+
+export default main;
+
+
+
+
+
+
 
 
 

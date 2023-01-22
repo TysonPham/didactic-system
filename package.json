@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "dotenv": "^16.0.3",
-    "puppeteer": "^19.5.2",
-    "snoowrap": "^1.23.0"
+    "snoowrap": "^1.23.0",
+    "wink-eng-lite-web-model": "^1.4.3",
+    "wink-nlp": "^1.13.0"
   }
 }
